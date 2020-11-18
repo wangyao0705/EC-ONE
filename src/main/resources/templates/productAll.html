@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		$('input[type=radio][name=radio-value]').change(function() {
+			var res = $('input[name="radio-value"]:checked').val();
+			var ress = res + "2";
+			var resss = res + "3";
+			var ressss = res + "4";
+			var resssss = res + "5";
+			var aa = $("#" + res).val();
+			$("#a").val(aa);
+			var bb = $("#" + ress).val();
+			$("#b").val(bb);
+			var cc = $("#" + resss).val();
+			$("#c").val(cc);
+			var dd = $("#" + ressss).val();
+			$("#d").val(dd);
+			var ee = $("#" + resssss).val();
+			$("#e").val(ee);
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="">
+		<h2>ショップデータ管理</h2>
+	</div>
+	<div id="menu">
+		<td>
+			<!-- 権限 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>管理権限</option>
+				<option value="/controlAlls">管理者一覧</option>
+				<option value="/roleall?charactername=root&characternames=manager">権限種類</option>
+		</select>
+		</td>
+		<td>
+			<!-- user一覧 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>ユーザー管理</option>
+				<option value="/usersAll">ユーザー一覧</option>
+
+		</select>
+		</td>
+		<td>
+			<!-- 商品一覧 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>商品管理</option>
+				<option value="/proAll">商品一覧</option>
+
+		</select>
+		</td>
+		<td>
+			<!-- 注文管理 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>注文管理</option>
+				<option value="/OrderAlls">注文一覧</option>
+
+		</select>
+		</td>
+
+
+	</div>
+	<hr>
+	<h3 align="center">商品一覧</h3>
+	<div id="" align="center">
+
+
+		<form action="proalls">
+			<td align="center"><span id=""> <a th:href="@{proAdd}"><input
+						type="button" value="新規追加"></a>
+			</span> <span><input type="submit" name="edit" value="編集"></a></span> <span><input
+					type="submit" value="削除" name="delete"></span></td>
+			<td align="center"><input type="submit" value="検索" name="select"></td>
+	</div>
+	<table align="center" border="1px">
+		<tr>
+			<th></th>
+			<th>商品ID</th>
+			<th>商品タイプ</th>
+			<th>商品情報</th>
+			<th>売価</th>
+			<th>原価</th>
+			<th>在庫</th>
+			<th>アクセス回数</th>
+			<th>登録時間</th>
+			<th>更新時間</th>
+
+		</tr>
+
+		<tr>
+			<td></td>
+			<td><input type="text" name="productid" placeholder="商品ID"
+				id="a"></td>
+			<td><select name="producttype">
+					<option>選択</option>
+					<option>腕時計</option>
+					<option>洋服</option>
+					<option>食品</option>
+					<option>運動靴</option>
+			</select></td>
+			<!-- 消費の写真とリンクを<a></a>タグで挿入 -->
+			<td><input type="text" name="product_intro" placeholder="商品情報"
+				id="b"></td>
+			<td><input type="text" name="sales" placeholder="売価" id="c"></td>
+			<td><input type="text" name="cost" placeholder="原価" id="d"></td>
+			<td><input type="text" name="stock" placeholder="在庫" id="e"></td>
+			<td><input type="text" name="Access_number" placeholder="アクセス回数"></td>
+			<td></td>
+			<td></td>
+
+		</tr>
+		<tr th:each="data:${pro}" th:object="${data}">
+			<td><div id="" align="center">
+					<input type="hidden" name="" id="" value="checkid" /> <input
+						type="radio" name="radio-value" class="checkbox" th:value="*{id}" />
+				</div></td>
+			<td th:text="${data.productId}"></td>
+			<input type="hidden" th:id="*{id}" th:value="*{productId}">
+			<td th:text="${data.productType}"></td>
+			<input type="hidden" th:id="*{id+'1'}" th:value="${data.productType}">
+			<td th:text="${data.productInfo}"></td>
+			<input type="hidden" th:id="*{id+'2'}" th:value="${data.productInfo}">
+			<td th:text="${data.sales}"></td>
+			<input type="hidden" th:id="*{id+'3'}" th:value="${data.sales}">
+			<td th:text="${data.cost}"></td>
+			<input type="hidden" th:id="*{id+'4'}" th:value="${data.cost}">
+			<td th:text="${data.stock}"></td>
+			<input type="hidden" th:id="*{id+'5'}" th:value="${data.stock}">
+			<td th:text="${data.accessNumber}"></td>
+			<td th:text="${data.dateCreated}"></td>
+			<td th:text="${data.dateModified}"></td>
+
+
+		</tr>
+	</table>
+	</form>
+
+</body>
+</html>
+

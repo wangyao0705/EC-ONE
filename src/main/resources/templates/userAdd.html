@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/userAdd.css" />
+</head>
+<body>
+
+	<img src="img/u2.png" width="50" title="shoping" />
+	<div id="top">
+		<a href="">TOP</a> <br /> <a href="">ヘルプ</a>
+	</div>
+
+	<hr />
+	<!-- <div id="language">
+			<a href="">日本語</a>
+			<span>|</span>
+			<a href="">English</a>
+			<span>|</span>
+			<a href="">中文</a>
+		</div> -->
+
+	<div id="login">
+		<font color="red">会員登録</font>
+	</div>
+	<hr />
+
+
+	<form action="usersadd" method="post" enctype="multipart/form-data">
+		<div id="form">
+			<table class="table" border="">
+
+				<div id="p">
+					<tr>
+						<td>写真選択</td>
+						<td><input type="file" name="photo"
+							accept=".jpg,.gif,.png,image/gif,image/jpeg,image/png"></td>
+					</tr>
+				</div>
+
+				<tr>
+					<td scope="row">メールアドレス:</td>
+					<td>
+						<div id="emil" align="left" style="padding: 0.625rem;">
+
+
+							<em><半角英数字></em><br> <span><他の会員が登録済みのメールアドレスは登録できません></span><br>
+							<input type="email" name="email" maxlength="100" size="50" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>ユーザID：</td>
+					<td>
+						<div id="user" align="left" style="padding: 0.625rem;">
+
+
+							<em>会員向けサービスにログインする時に使用します。</em><br>
+
+							<!-- <input type="radio" name="radio-mail" id="" value="0" checked="checked"/>
+						メールアドレスをユーザIDとして使用<br>
+
+						<input type="radio" name="radio-mail" id="" value="1" />
+						メールアドレス以外をユーザIDとして使用<br> -->
+							<em><6文字以上.半角数学>数学だけにすることはできません</em><br> <input type="text"
+								name="username" maxlength="100" size="50" title="aaa1234"
+								style="color: rgb(153, 153, 153);" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>電話：</td>
+					<td>
+						<div id="user" align="left" style="padding: 0.625rem;">
+
+							<input type="text" name="tel" maxlength="100" size="50"
+								title="aaa1234" style="color: rgb(153, 153, 153);" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>パスワード：</td>
+
+					<td>
+						<div id="password" align="left" style="padding: 0.625rem;">
+
+
+							<em><６文字以上半角数学></em><br>
+							<!-- <em>[ユーザIDと同じものは登録できません]</em><br> -->
+							<input type="password" name="password" 　maxlength="100" size="50" />
+					</td>
+					</div>
+				</tr>
+				<tr>
+					<td>性別:</td>
+
+					<td>
+						<div id="sex" align="left" style="padding: 0.625rem;">
+
+							man<input type="radio" name="sex" value="man" checked="checked" />
+							woman<input type="radio" name="sex" value="woman" />
+						</div>
+					</td>
+
+				</tr>
+				<tr>
+					<td>住所:</td>
+
+					<td><div id="p" align="left" style="padding: 0.625rem;">
+							<input type="text" name="address" maxlength="100" size="50">
+						</div></td>
+
+				</tr>
+				<tr>
+					<td>誕生日:</td>
+
+					<td>
+						<div id="p" align="left" style="padding: 0.625rem;">
+							<input type="date" name="birth" maxlength="100" size="50">
+						</div>
+					</td>
+
+				</tr>
+			</table>
+			<br>
+			<div id="li">
+				<li>情報登録</li> <br>
+			</div>
+
+			<table class="table2" border="">
+
+				<tr>
+					<td>氏名：</td>
+					<td>
+						<div id="n" align="left" style="padding: 0.625rem;">
+							<em>入力情報に誤りがあると、パスワード再設定が正しい行えない場合があります。</em><br> (姓)<input
+								type="text" name="name1" maxlength="85" size="28" /> (名)<input
+								type="text" name="name2" maxlength="85" size="28" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>氏名(フリガナ):</td>
+					<td>
+						<div id="f" align="left" style="padding: 0.625rem;">
+							<em><全角カタカナのみ></em><br> (姓)<input type="text"
+								name="furigana1" 　maxlength="85" size="28" /> (名)<input
+								type="text" name="furigana2" 　maxlength="85" size="28" />
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+
+		<div id="botan">
+			<a href=""><input type="submit" value="登録" name="login"
+				maxlength="85" size="28" /></a> <input type="reset" value="リセット">
+		</div>
+
+	</form>
+	<hr />
+
+</body>
+</html>

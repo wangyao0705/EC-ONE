@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/characterAll.css" />
+</head>
+<body>
+	<div id="">
+		<h2>ショップデータ管理</h2>
+	</div>
+	<div id="menu">
+		<td>
+			<!-- 権限 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>管理権限</option>
+				<option value="/controlAlls">管理者一覧</option>
+				<option value="/roleall?charactername=root&characternames=manager">権限種類</option>
+		</select>
+		</td>
+		<td>
+			<!-- user一覧 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>ユーザー管理</option>
+				<option value="/usersAll">ユーザー一覧</option>
+
+		</select>
+		</td>
+		<td>
+			<!-- 商品一覧 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>商品管理</option>
+				<option value="/proAll">商品一覧</option>
+
+		</select>
+		</td>
+		<td>
+			<!-- 注文管理 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>注文管理</option>
+				<option value="/OrderAlls">注文一覧</option>
+
+		</select>
+		</td>
+
+
+	</div>
+	<hr>
+	<h2 align="center">権限一覧</h2>
+	<tr>
+
+
+
+	</tr>
+	<table align="center" border="1px">
+		<tr>
+			<th>職位</th>
+			<th>使用状態</th>
+			<th></th>
+			<!-- <th>作成時間</th> -->
+			<th>更新日時</th>
+
+		</tr>
+		<form action="chedit">
+			<!-- <tr th:each="data:${role}" th:object="${data}">
+				<td th:text="${data.characterName}"><input type="text" name="charactername" placeholder="職位"
+					 style="width: 10rem; height: 1.25rem;"></td>
+
+				<td th:text="${data.statusbycharacter}"><input type="text" name="state" id="" value="" /></td>
+					状態
+					<td><select name="status"
+					style="width: 10rem; height: 1.25rem;">
+						<option>選択...</option>
+						<option>使用中</option>
+						<option>使用停止</option>
+				</select>
+
+
+				<td></td>
+				<td th:text="${data.dateModified}"></td>
+				<th><div class="button">
+						<a th:href="@{cedit(charName=${data.characterName})}"><input type="button" value="編集" name="edit"></a>
+					</div></th>
+			</tr> -->
+			<tr>
+				<input type="hidden" name="charactername" placeholder="職位"
+					th:value="${role.characterName}">
+				<td th:text="${role.characterName}"><input type="text"
+					placeholder="職位" th:valuetype="${role.characterName}"
+					style="width: 10rem; height: 1.25rem;"></td>
+				<td><select name="status"
+					style="width: 10rem; height: 1.25rem;">
+						<option>選択...</option>
+						<option>使用中</option>
+						<option>使用停止</option>
+				</select>
+				<td th:text="${role.statusbycharacter}"><input type="text"
+					name="state" id="" value="" /></td>
+
+				<td th:text="${role.dateModified}"></td>
+				<th><div class="button">
+						<!-- <a th:href="@{edit1(charactername=${role.characterName})}"> -->
+						<input type="submit" value="編集" name="edit1"></a>
+					</div></th>
+			</tr>
+			<tr>
+				<input type="hidden" name="characternames" placeholder="職位"
+					th:value="${ro.characterName}">
+				<td th:text="${ro.characterName}"><input type="text"
+					placeholder="職位" th:valuetype="${ro.characterName}"
+					style="width: 10rem; height: 1.25rem;"></td>
+				<td><select name="statuss"
+					style="width: 10rem; height: 1.25rem;">
+						<option>選択...</option>
+						<option>使用中</option>
+						<option>使用停止</option>
+				</select>
+				<td th:text="${ro.statusbycharacter}"<input type="text"
+					name="states" id="" value="" /></td>
+
+				<td th:text="${ro.dateModified}"></td>
+				<th><div class="button">
+						<input type="submit" value="編集" name="edit2"></a>
+					</div></th>
+			</tr>
+		</form>
+
+
+	</table>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/userAdd.css" />
+</head>
+<body>
+
+	<img src="img/u2.png" width="50" title="shoping" />
+	<div id="top">
+		<a href="">TOP</a> <br /> <a href="">ヘルプ</a>
+	</div>
+
+	<hr />
+	<!-- <div id="language">
+			<a href="">日本語</a>
+			<span>|</span>
+			<a href="">English</a>
+			<span>|</span>
+			<a href="">中文</a>
+		</div> -->
+
+	<div id="login">
+		<font color="red">会員情報変更</font>
+	</div>
+	<hr />
+
+
+	<form action="useredit" method="get" enctype="multipart/form-data">
+		<div id="form">
+			<table class="table" border="">
+				<input type="hidden" th:value="${user.id}" name="id">
+				<tr>
+
+					<div id="p">
+
+						<td>写真選択</td>
+						<td><input type="file" name="photo"
+							accept=".jpg,.gif,.png,image/gif,image/jpeg,image/png"></td>
+					</div>
+				</tr>
+				<tr>
+					<td scope="row">メールアドレス:</td>
+					<td>
+						<div id="emil" align="left" style="padding: 0.625rem;">
+
+
+							<em><半角英数字></em><br> <span><他の会員が登録済みのメールアドレスは登録できません></span><br>
+							<input type="email" th:value="${user.email}" name="email"
+								maxlength="100" size="50" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>ユーザID：</td>
+					<td>
+						<div id="user" align="left" style="padding: 0.625rem;">
+
+
+							<em>会員向けサービスにログインする時に使用します。*変更できません</em><br> <input
+								type="text" name="username" th:value="${user.userId}" readonly
+								maxlength="100" size="50" title="aaa1234"
+								style="color: rgb(153, 153, 153);" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>電話：</td>
+					<td>
+						<div id="user" align="left" style="padding: 0.625rem;">
+
+							<input type="text" name="tel" th:value="${user.tel}"
+								maxlength="100" size="50" title="aaa1234"
+								style="color: rgb(153, 153, 153);" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>パスワード：</td>
+
+					<td>
+						<div id="password" align="left" style="padding: 0.625rem;">
+
+
+
+							<input type="password" name="password"
+								th:value="${user.passWord}" maxlength="100" size="50" />
+					</td>
+					</div>
+				</tr>
+				<tr>
+					<td>性別:</td>
+
+					<td>
+						<div id="sex" align="left" style="padding: 0.625rem;">
+
+							man<input type="radio" name="sex" value="男" checked="checked" />
+							woman<input type="radio" name="sex" value="女" />
+						</div>
+					</td>
+
+				</tr>
+				<tr>
+					<td>住所:</td>
+
+					<td><div id="p" align="left" style="padding: 0.625rem;">
+							<input type="text" th:value="${user.address}" name="address"
+								maxlength="100" size="50">
+						</div></td>
+
+				</tr>
+			</table>
+			<br>
+		</div>
+		<br>
+
+		<div id="botan">
+			<a href=""><input type="submit" value="登録" name="login"
+				maxlength="85" size="28" /></a> <input type="reset" value="リセット">
+		</div>
+
+	</form>
+	<hr />
+
+</body>
+</html>

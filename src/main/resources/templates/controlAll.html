@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/controlAll.css" />
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		//按钮事件的类型和name
+		$('input[type=radio][name=radio-value]').change(function() {
+			//确认哪一个按钮触发事件，并取到id=？？并赋值给var res
+			var res = $('input[name="radio-value"]:checked').val();
+			//alert(res);
+			/* var str = res.toString(); */
+			/* var f="#";
+			var c=f.concat(res);
+			/* c=#3 ok */
+			//alert(c);
+			/*var ids = "\""+c +"\"";
+			alert(ids); */
+			var ress = res + "1";
+
+			//变量不需要加双引号，进行字符串拼接（“#（id=）name”）.val是把当前id的text中的值取出（controlname）并赋值给a
+			var a = $("#" + res).val();
+			//将a的值添加到id=aa的text里面
+			$("#aa").val(a);
+			/* alert(ress); */
+			var e = $("#" + ress).val();
+			/* alert(e); */
+			$("#ee").val(e);
+			/* 	var b = $("#b").val();
+				$("#bb").val(b);
+				var c = $("#c").val();
+				$("#cc").val(c);
+				var d = $("#d").val();
+				$("#dd").val(d);
+				/* var e = $("#e").val();
+				$("#ee").val(e); */
+		});
+
+	});
+</script>
+
+</head>
+<body>
+	<div id="">
+		<h2>ショップデータ管理</h2>
+	</div>
+	<div id="menu">
+
+		<table>
+			<tr>
+				<td>
+					<!-- onchange="window.location=this.value"代表option中的value可以当作一个超链接使用 -->
+					<!-- 権限 --> <select name="authority"
+					onchange="window.location=this.value">
+						<!-- 隐藏管理权限 -->
+						<option disabled selected hidden>管理権限</option>
+						<option value="/controlAlls">管理者一覧</option>
+						<option value="/roleall?charactername=root&characternames=manager">権限種類</option>
+				</select>
+				</td>
+				<td>
+					<!-- user一覧 --> <select name="authority"
+					onchange="window.location=this.value">
+						<option disabled selected hidden>ユーザー管理</option>
+						<option value="/usersAll">ユーザー一覧</option>
+
+				</select>
+				</td>
+				<td>
+					<!-- 商品一覧 --> <select name="authority"
+					onchange="window.location=this.value">
+						<option disabled selected hidden>商品管理</option>
+						<option value="/proAll">商品一覧</option>
+
+				</select>
+				</td>
+				<td>
+					<!-- 注文管理 --> <select name="authority"
+					onchange="window.location=this.value">
+						<option disabled selected hidden>注文管理</option>
+						<option value="/OrderAlls">注文一覧</option>
+
+				</select>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+	<hr>
+	<h2 align="left">管理者一覧</h2>
+	<form action="Alls">
+		<table>
+
+			<tr>
+				<th><div class="button">
+						<a th:href="@{coAdd}"><input type="button" value="新規追加"></a>
+					</div></th>
+				<th><div class="button">
+						<input type="submit" value="編集" name="edit"></a>
+					</div></th>
+				<th><div class="button">
+						<!-- <a th:href="@{delet(radio-value=${})}"></a> -->
+						<input type="submit" value="削除" name="delete">
+					</div></th>
+				<th><div class="button">
+						<a href=""><input type="submit" value="検索" name="select"></a>
+					</div></th>
+				<th><div class="button">
+						<a th:href="@{coAll}"><input type="button" value="ALL検索">
+					</div></th>
+			</tr>
+		</table>
+
+		<table align="center" border="1px">
+			<tr class="">
+				<th style="width: 5rem;"></th>
+				<th>管理者名</th>
+				<th>状態</th>
+				<th>職位</th>
+				<th>性別</th>
+				<th>電話番号</th>
+				<th>ログイン回数</th>
+				<th>最終ログイン</th>
+				<th>作成時間</th>
+
+			</tr>
+			<tr align="center">
+				<td></td>
+				<td><input type="text" name="controlname" placeholder="管理者名"
+					id="aa" style="width: 7.5rem; height: 1.25rem;"></td>
+				<td>
+					<!-- 状態 --> <select name="status" id="bb"
+					style="width: 6.25rem; height: 1.25rem;">
+						<option>選択...</option>
+						<option>在職中</option>
+						<option>退職</option>
+				</select>
+				</td>
+				<td>
+					<!-- 権限 --> <select name="authority" id="cc"
+					style="width: 6.25rem; height: 1.25rem;">
+						<option>選択...</option>
+						<option>root</option>
+						<option>manager</option>
+				</select>
+				</td>
+				<td><select name="sex" id="dd"
+					style="width: 6.25rem; height: 1.25rem;">
+						<option>選択...</option>
+						<option>女</option>
+						<option>男</option>
+				</select></td>
+				<td><input type="text" name="tel" id="ee"
+					style="width: 7.5rem; height: 1.25rem;"></td>
+
+				<td><input type="text" name="login_times"
+					style="width: 7.5rem; height: 1.25rem;"></td>
+				<td></td>
+				<td></td>
+
+			</tr>
+			<tr th:each="data:${controlList}" th:object="${data}">
+				<td><div id="" align="center">
+						<input type="radio" name="radio-value" class="checkbox"
+							th:value="*{id}" /> <input type="hidden" name="checkid"
+							th:value="*{id}" />
+					</div></td>
+				<td th:text="*{controlName}"></td>
+				<input type="hidden" th:id="*{id}" th:value="*{controlName}">
+				<td th:text="*{statusbycontrol}"><input type="text" id="b"></td>
+				<td th:text="*{characterName}"><input type="text" id="c"></td>
+				<td th:text="*{sex}"><input type="text" id="d"></td>
+				<td th:text="*{tel}"></td>
+				<input type="hidden" th:id="*{id + '1'}" th:value="*{tel}">
+				<td th:text="*{loginTimes}"></td>
+				<td th:text="*{lastLogin}"></td>
+				<td th:text="*{dateCreated}"></td>
+
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

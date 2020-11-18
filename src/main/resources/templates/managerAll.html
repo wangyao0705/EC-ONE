@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/controlAll.css" />
+</head>
+<body>
+	<div id="">
+		<h2>ショップデータ管理</h2>
+	</div>
+	<div id="menu">
+		<table>
+			<tr>
+				<td>
+					<!-- 権限 --> <select name="authority"
+					onchange="window.location=this.value">
+						<option disabled selected hidden>管理権限</option>
+						<option th:value="@{/controlAllm(userId=${control.controlName})}">管理者一覧</option>
+						<!-- <option value="controlAll.html">権限種類</option> -->
+				</select>
+				</td>
+				<td>
+					<!-- user一覧 --> <select name="authority"
+					onchange="window.location=this.value">
+						<option disabled selected hidden>ユーザー管理</option>
+						<option value="/usersAll">ユーザー一覧</option>
+
+				</select>
+				</td>
+				<td>
+					<!-- 商品一覧 --> <select name="authority"
+					onchange="window.location=this.value">
+						<option disabled selected hidden>商品管理</option>
+						<option value="/proAll">商品一覧</option>
+
+				</select>
+				</td>
+				<td>
+					<!-- 注文管理 --> <select name="authority"
+					onchange="window.location=this.value">
+						<option disabled selected hidden>注文管理</option>
+						<option value="/OrderAlls">注文一覧</option>
+
+				</select>
+				</td>
+			<tr>
+		</table>
+	</div>
+	<hr>
+	<h2 align="left">管理者一覧</h2>
+	<div id="username">
+		<!-- <tr th:each="data:${controlList}" th:object="${data}"> -->
+
+		<tr>
+			<td>管理者名</td>
+			<td th:text="${control.controlName}"></td>
+		</tr>
+
+		<!-- <a href="">username</a> -->
+		<tr>
+
+			<th><div class="button">
+
+					<!-- 传值的方法：urlname(pass)+?(()+name(Mcontrolname)=value(control.controlName)  pass?Mcontrolname=aaa-->
+					<a th:href="@{pass(Mcontrolname=${control.controlName})}"><input
+						type="button" value="password編集"></a>
+				</div></th>
+			<form action="select">
+
+				<th><div class="button">
+						<input type="submit" value="検索"> <input type="hidden"
+							name="Mcname" th:value="${control.controlName}">
+
+					</div></th>
+		</tr>
+		<table align="center" border="1px">
+			<tr class="">
+
+				<th>管理者名</th>
+				<th>状態</th>
+				<th>職位</th>
+				<th>性別</th>
+				<th>電話番号</th>
+				<th>ログイン回数</th>
+				<th>最終ログイン</th>
+				<th>作成時間</th>
+
+			</tr>
+			<tr align="center">
+				<td><input type="text" name="controlname" placeholder="管理者名"
+					style="width: 7.5rem; height: 1.25rem;"></td>
+				<td>
+					<!-- 状態 --> <select name="status"
+					style="width: 6.25rem; height: 1.25rem;">
+						<option>選択...</option>
+						<option>在職中</option>
+						<option>退職</option>
+				</select>
+				</td>
+				<td>
+					<!-- 権限 --> <select name="authority"
+					style="width: 6.25rem; height: 1.25rem;">
+						<option>選択...</option>
+						<option>root</option>
+						<option>普通ユーザー</option>
+				</select>
+				</td>
+				<td><select name="sex" style="width: 6.25rem; height: 1.25rem;">
+						<option>選択...</option>
+						<option>女</option>
+						<option>男</option>
+				</select></td>
+				<td><input type="text" name="tel"
+					style="width: 7.5rem; height: 1.25rem;"></td>
+				<td><input type="text" name="login_times"
+					style="width: 7.5rem; height: 1.25rem;"></td>
+				<td></td>
+				<td></td>
+
+			</tr>
+			<tr th:each="data:${controlList}" th:object="${data}">
+				<td th:text="${data.controlName}"></td>
+				<td th:text="*{statusbycontrol}"></td>
+				<td th:text="*{characterName}"></td>
+				<td th:text="*{sex}"></td>
+				<td th:text="*{tel}"></td>
+				<td th:text="*{loginTimes}"></td>
+				<td th:text="*{lastLogin}"></td>
+				<td th:text="*{dateCreated}"></td>
+
+
+			</tr>
+		</table>
+		</form>
+</body>
+</html>

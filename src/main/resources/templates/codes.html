@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div>
+		<table width="100%">
+			<tr>
+				<!-- <td>ユーザー名：</td> -->
+				<td th:text="${user.userId}"><input type="text"
+					placeholder="氏名" name="username"></td>
+
+				<td align="right"><a
+					th:href="@{returns(userId=${user.userId})}"><input
+						type="button" value="戻る"></a></td>
+			</tr>
+		</table>
+	</div>
+	<hr>
+	<div>
+		<div align="center"></div>
+		<br />
+		<table align="center" border="1px">
+			<tr>
+				<th>商品ID</th>
+				<th>商品タイプ</th>
+				<th>商品情報</th>
+				<th>売価</th>
+				<th>数量</th>
+			</tr>
+
+			<tr th:each="data:${code}" th:object="${data}">
+				<form action="buy">
+					<input type="hidden" th:value="${user.userId}" name="userId">
+					<td th:text="*{productId}"></td> <input type="hidden"
+						th:value="*{productId}" name="proid">
+					<td th:text="*{productType}"></td> <input type="hidden"
+						th:value="*{productType}" name="protype">
+					<td th:text="*{productInfo}"></td> <input type="hidden"
+						th:value="*{productInfo}" name="proinfo">
+					<td th:text="*{sales}"></td> <input type="hidden"
+						th:value="*{sales}" name="sales"> <input type="hidden"
+						th:value="${data.id}" name="id">
+					<td align="center"><input type="text" name="number"> <br />
+						<input type="submit" value="購入"> <a
+						th:href="@{deletecode(id=${data.id},userId=${user.userId})}"><input
+							type="button" value="削除"></a></td>
+				</form>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

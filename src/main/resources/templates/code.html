@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	var proID = document.getElementById('pid').value;
+	var submit1 = document.getElementById('submit');
+	submit1.onclick = function() {
+		alert(proID)
+	}
+</script>
+</head>
+<body>
+
+	<div>
+		<table width="100%">
+			<tr>
+				<!-- <td>ユーザー名：</td> -->
+				<td th:text="${user.userId}"><input type="hidden"
+					placeholder="氏名" name="username" th:value="${user.userId}"></td>
+				<td align="right"><a
+					th:href="@{userEdit(userID=${user.userId},Id=${user.id})}"><input
+						type="button" value="情報変更"></a> <a
+					th:href="@{codebutton(userId=${user.userId})}"><input
+						type="button" value="カート"></a> <a th:href="@{return}"><input
+						type="button" value="ログアウト"></a></td>
+			</tr>
+		</table>
+	</div>
+	<hr>
+	<div>
+		<div align="center">
+			<form action="selects">
+				<input type="hidden" name="userID" th:value="${user.userId}">
+				<input type="text" name="text"> <input type="submit"
+					value="商品タイプ検索"> <a
+					th:href="@{Allselect(userId=${user.userId})}"><input
+					type="button" value="All検索"></a>
+			</form>
+		</div>
+		<br />
+		<table align="center" border="1px">
+			<tr>
+				<th>商品ID</th>
+				<th>商品タイプ</th>
+				<th>商品情報</th>
+				<th>売価</th>
+				<th>操作</th>
+			</tr>
+			<tr th:each="data:${productList}" th:object="${data}">
+				<form action="buys" method="get">
+					<input type="hidden" name="userID" th:value="${user.userId}">
+					<td th:text="*{productId}"></td> <input type="hidden"
+						th:value="*{productId}" name="proid" id="pid">
+					<td th:text="*{productType}"></td>
+					<!-- <input type="hidden" th:value="*{productType}" name="protype"> -->
+					<td th:text="*{productInfo}"></td>
+					<!-- <input type="hidden" th:value="*{productInfo}" name="proinfo"> -->
+					<td th:text="*{sales}"></td>
+					<!-- <input type="hidden" th:value="*{sales}" name="sales"> -->
+					<td align="center"><span><a
+							th:href="@{codes(proId=${data.productId},userID=${user.userId},protype=${data.productType},proinfo=${data.productInfo},sales=${data.sales})}">
+								<input type="button" value="カートに入れる">
+						</a></span><br /></td>
+					<!-- <a th:href="@{Buy(proId=${data.productId},userID=${user.userId},protype=${data.productType},proinfo=${data.productInfo},sales=${data.sales})}"> -->
+					<td><input type="text" name="number"> <input
+						type="submit" value="今すぐ買う" name="submit_value" id="submit"></a></td>
+				</form>
+			</tr>
+			<br />
+		</table>
+	</div>
+</body>
+</html>

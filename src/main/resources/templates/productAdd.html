@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2 align="center">商品登録</h2>
+	<form action="productAdd">
+		<table align="center" border="1px">
+			<tr>
+				<td>商品タイプ</td>
+				<td><select name="producttype">
+						<option>腕時計</option>
+						<option>洋服</option>
+						<option>食品</option>
+						<option>運動靴</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>商品紹介</td>
+				<td><textarea name="product_intro"></textarea></td>
+			</tr>
+			<tr>
+				<td>商品ID</td>
+				<td><input type="text" name="proid"></td>
+			</tr>
+			<tr>
+				<td>販売価格</td>
+				<td><input type="text" name="sales"></td>
+			</tr>
+			<tr>
+				<td>仕入原価</td>
+				<td><input type="text" name="cost"></td>
+			</tr>
+			<tr>
+				<td>在庫</td>
+				<td><input type="text" name="stock"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" value="保存">
+					<input type="reset" value="リセット"></td>
+			</tr>
+		</table>
+	</form>
+
+
+
+
+</body>
+</html>

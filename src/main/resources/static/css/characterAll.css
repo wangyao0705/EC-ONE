@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.button {
+	display: inline;
+}
+
+th {
+	padding: 12px;
+	line-height: 20px;
+	min-width: 160px;
+	max-width: 160px;
+	word-break: break-all;
+}
+
+td {
+	padding: 12px;
+	line-height: 20px;
+	min-width: 160px;
+	max-width: 160px;
+	word-break: break-all;
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		$('input[type=radio][name=checkbox-value]').change(function() {
+			var res = $('input[name="checkbox-value"]:checked').val();
+			r = res + "1";
+			re = res + "2";
+			ress = res + "3";
+			resss = res + "4";
+			ressss = res + "5";
+			resr = res + "6";
+			resre = res + "7";
+			var aa = $("#" + res).val();
+			$("#a").val(aa);
+			var bb = $("#" + r).val();
+			$("#b").val(bb);
+			var cc = $("#" + re).val();
+			$("#c").val(cc);
+			var dd = $("#" + ress).val();
+			$("#d").val(dd);
+			var ee = $("#" + resss).val();
+			$("#e").val(ee);
+			var ff = $("#" + ressss).val();
+			$("#f").val(ff);
+			var gg = $("#" + resr).val();
+			$("#g").val(gg);
+			var hh = $("#" + resre).val();
+			$("#h").val(hh);
+		});
+	});
+</script>
+</head>
+<body>
+
+	<div id="">
+		<h2>ショップデータ管理</h2>
+	</div>
+	<div id="menu">
+		<td>
+			<!-- 権限 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>管理権限</option>
+				<option value="/controlAlls">管理者一覧</option>
+				<option value="/roleall?charactername=root&characternames=manager">権限種類</option>
+		</select>
+		</td>
+		<td>
+			<!-- user一覧 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>ユーザー管理</option>
+				<option value="/usersAll">ユーザー一覧</option>
+
+		</select>
+		</td>
+		<td>
+			<!-- 商品一覧 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>商品管理</option>
+				<option value="/proAll">商品一覧</option>
+
+		</select>
+		</td>
+		<td>
+			<!-- 注文管理 --> <select name="authority"
+			onchange="window.location=this.value">
+				<option disabled selected hidden>注文管理</option>
+				<option value="/OrderAlls">注文一覧</option>
+
+		</select>
+		</td>
+
+
+	</div>
+	<hr>
+	<h3>注文一覧</h3>
+	<form action="AllOrder">
+		<td align="center"><input type="submit" value="検索" name="select"></td>
+		<td align="center"><span><input type="submit" value="編集"
+				name="edit"></span> <span> <input type="submit" value="削除"
+				name="delect"></span> <input type="submit" value="出荷確認"
+			name="check"></td>
+		<table align="center" border="1px">
+			<tr>
+				<th></th>
+				<th>注文番号</th>
+				<th>商品ID</th>
+				<th>商品名</th>
+				<th>ユーザー名</th>
+				<th>注文状況</th>
+				<th>支払状況</th>
+				<th>総額</th>
+				<th>支払金額</th>
+				<th>住所</th>
+				<th>注文数</th>
+				<th>支払時間</th>
+				<th>出荷時間</th>
+
+
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="text" name="orderid" placeholder="注文番号" id="a"></td>
+				<td><input type="text" name="pid" placeholder="商品ID" id="b"></td>
+				<td><input type="text" name="pname" placeholder="商品名" id="c"></td>
+				<td><input type="text" name="uname" placeholder="ユーザー名" id="d"></td>
+				<!-- <td><input type="text" name="status" placeholder="注文状況"></td> -->
+				<td><select name="authority">
+						<option disabled selected hidden>注文状況</option>
+						<option>注文未完</option>
+						<option>注文完了</option>
+				</select></td>
+				<td><select name="authoritys">
+						<option disabled selected hidden>支払状況</option>
+						<option>支払未完</option>
+						<option>支払完了</option>
+						<option>支払完了(check済)</option>
+						<option>返金</option>
+
+				</select></td>
+				<td><input type="text" name="total" placeholder="総額" id="e"></td>
+				<td><input type="text" name="payment" placeholder="支払金額" id="f"></td>
+				<td><input type="text" name="address" placeholder="住所" id="g"></td>
+				<td><input type="text" name="numberbyorder" placeholder="注文数"
+					id="h"></td>
+				<td></td>
+				<td></td>
+
+
+			</tr>
+
+			<tr th:each="data:${order}" th:object="${data}">
+
+				<td><div id="" align="center">
+						<input type="hidden" name="" id="" value="checkid" /> <input
+							type="radio" name="checkbox-value" class="checkbox"
+							th:value="${data.id}" />
+					</div></td>
+				<td th:text="${data.orderId}"></td>
+				<input type="hidden" th:id="*{id}" th:value="${data.orderId}">
+
+				<td th:text="${data.productId}"></td>
+				<input type="hidden" th:id="*{id+'1'}" th:value="${data.productId}">
+				<td th:text="${data.productInfo}"></td>
+				<input type="hidden" th:id="*{id+'2'}"
+					th:value="${data.productInfo}">
+				<td th:text="${data.userName}"></td>
+				<input type="hidden" th:id="*{id+'3'}" th:value="${data.userName}">
+				<td th:text="${data.statusByOrder}"></td>
+				<td th:text="${data.statusByBuy}"></td>
+				<td th:text="${data.total}"></td>
+				<input type="hidden" th:id="*{id+'4'}" th:value="${data.total}">
+				<td th:text="${data.payment}"></td>
+				<input type="hidden" th:id="*{id+'5'}" th:value="${data.payment}">
+				<td th:text="${data.address}"></td>
+				<input type="hidden" th:id="*{id+'6'}" th:value="${data.address}">
+
+				<td th:text="${data.orderNumber}"></td>
+				<input type="hidden" th:id="*{id+'7'}"
+					th:value="${data.orderNumber}">
+
+				<td th:text="${data.payTime}"></td>
+				<td th:text="${data.ConfirmationTime}"></td>
+
+
+
+			</tr>
+		</table>
+	</form>
+	<!-- <div align="center"><input type="button" value="新規追加"></div> -->
+
+
+
+</body>
+</html>

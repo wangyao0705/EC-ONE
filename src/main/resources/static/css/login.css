@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.logo {
+	font-size: 60px;
+	font-weight: 500;
+	color: #0e90d2;
+	text-shadow: -2px 1px #fff;
+	font-size: 1.25rem;
+}
+
+.am-center {
+	text-align: center;
+	font-size: 0.75rem;
+}
+
+.admin-login {
+	text-align: center;
+	border: 0.1875rem solid aliceblue;
+	background-color: rgba();
+	margin: 0.9375rem;
+	padding: 0.0625rem;
+}
+
+.page {
+	width: 200px; /**宽度**/
+	height: 200px; /**高度**/
+	position: absolute; /**绝对定位**/
+	left: 50%; /**左边50%**/
+	top: 50%; /**顶部50%**/
+	margin-top: -50px; /**上移-50%**/
+	margin-left: -100px; /**左移-50%**/
+}
+
+.button {
+	background-color: white;
+	color: black;
+	border: 1px solid #1AC7FF;
+}
