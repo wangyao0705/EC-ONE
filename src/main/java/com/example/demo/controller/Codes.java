@@ -45,7 +45,7 @@ public class Codes {
 	private String longpath;
 
 	/*
-	 * 一覧
+	 * 一覧oo
 	 */
 	@RequestMapping("/codeAll")
 	public String codeall(Model model, @RequestParam(name = "userId") String userid) {
